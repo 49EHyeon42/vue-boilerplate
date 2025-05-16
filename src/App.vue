@@ -2,7 +2,7 @@
 
 <template>
   <v-app>
-    <h1>Vue Boilerplate</h1>
+    <RouterView />
   </v-app>
 </template>
 
