@@ -27,15 +27,23 @@
         </div>
 
         <div class="d-flex align-center">
-          <v-btn density="compact" icon variant="text">
-            <v-icon>mdi-thumb-up-outline</v-icon>
-          </v-btn>
-          <span class="ml-2 mr-2 text-caption">1,234</span>
+          <v-tooltip location="bottom" text="좋아요">
+            <template #activator="{ props }">
+              <v-btn v-bind="props" density="compact" icon variant="text">
+                <v-icon>mdi-thumb-up-outline</v-icon>
+              </v-btn>
+            </template>
+          </v-tooltip>
+          <span class="mx-2 text-caption">1,234</span>
 
-          <v-btn density="compact" icon variant="text">
-            <v-icon>mdi-thumb-down-outline</v-icon>
-          </v-btn>
-          <span class="ml-2 mr-2 text-caption">123</span>
+          <v-tooltip location="bottom" text="싫어요">
+            <template #activator="{ props }">
+              <v-btn v-bind="props" density="compact" icon variant="text">
+                <v-icon>mdi-thumb-down-outline</v-icon>
+              </v-btn>
+            </template>
+          </v-tooltip>
+          <span class="mx-2 text-caption">123</span>
         </div>
       </div>
 
