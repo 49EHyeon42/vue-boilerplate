@@ -25,6 +25,18 @@
           Commodo odio aenean sed adipiscing diam donec adipiscing tristique. Mi eget mauris
           pharetra et. Non tellus orci ac auctor augue. Elit at imperdiet dui accumsan sit.
         </div>
+
+        <div class="d-flex align-center">
+          <v-btn density="compact" icon variant="text">
+            <v-icon>mdi-thumb-up-outline</v-icon>
+          </v-btn>
+          <span class="ml-2 mr-2 text-caption">1,234</span>
+
+          <v-btn density="compact" icon variant="text">
+            <v-icon>mdi-thumb-down-outline</v-icon>
+          </v-btn>
+          <span class="ml-2 mr-2 text-caption">123</span>
+        </div>
       </div>
 
       <v-menu>
