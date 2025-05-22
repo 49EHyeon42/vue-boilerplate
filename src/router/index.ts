@@ -13,6 +13,11 @@ const router = createRouter({
       name: 'sidebarLayout',
       component: () => import('@/testViews/SidebarLayoutViews.vue'),
     },
+    {
+      path: '/test-views/sidebar-layout2',
+      name: 'sidebarLayout2',
+      component: () => import('@/testViews/SidebarLayoutViews2.vue'),
+    },
   ],
 });
 
