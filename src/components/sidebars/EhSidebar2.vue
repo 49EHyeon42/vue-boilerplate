@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import EhListItem2 from './items/EhListItem2.vue';
+import EhBrand from '../common/EhBrand.vue';
 import EhSubHeader2 from './subHeaders/EhSubHeader2.vue';
+import EhListItem2 from './items/EhListItem2.vue';
 
 const drawer = defineModel<boolean>('drawer');
 </script>
@@ -8,7 +9,7 @@ const drawer = defineModel<boolean>('drawer');
 <template>
   <v-navigation-drawer v-model="drawer" temporary>
     <v-container class="d-flex align-center">
-      <span class="text-h6">49EHyeon42</span>
+      <EhBrand />
     </v-container>
 
     <v-list density="compact">
