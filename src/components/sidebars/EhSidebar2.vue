@@ -32,7 +32,7 @@ const props = defineProps<{
 
         <EhListItem2 :depth="1" to="/" icon="mdi-application" title="커넥트립" />
         <EhListItem2 :depth="1" to="/" icon="mdi-application" title="전화대장군" />
-        <EhListItem2 :depth="1" to="/" icon="mdi-application" title="로컬업" />
+        <EhListItem2 :depth="1" to="/" icon="mdi-application" title="로컬업" badge="NEW" />
       </v-list-group>
 
       <v-list-group>
@@ -40,7 +40,7 @@ const props = defineProps<{
           <EhListItem2 v-bind="props" icon="mdi-tools" title="Utilities" />
         </template>
 
-        <EhListItem2 :depth="1" to="/" icon="mdi-application" title="NULL" />
+        <EhListItem2 :depth="1" to="/" icon="mdi-application" title="NULL" badge="NEW" />
       </v-list-group>
 
       <EhSubHeader2 title="Contact" />
