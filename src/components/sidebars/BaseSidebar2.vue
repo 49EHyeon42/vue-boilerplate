@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import EhListItem2 from './items/EhListItem2.vue';
+import EhSubHeader2 from './subHeaders/EhSubHeader2.vue';
 
 const drawer = defineModel<boolean>('drawer');
 </script>
@@ -49,10 +50,7 @@ const drawer = defineModel<boolean>('drawer');
       </v-list-group>
 
       <!-- 보일러플레이트 -->
-      <v-container class="d-flex align-center pa-2">
-        <span class="mr-2 text-no-wrap text-subtitle-1">Contact</span>
-        <v-divider />
-      </v-container>
+      <EhSubHeader2 title="Contact" />
       <EhListItem2
         href="mailto:49ehyeon42@email.com"
         icon="mdi-email"
