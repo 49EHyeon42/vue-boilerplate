@@ -53,6 +53,6 @@ const resetCopyIcon = () => {
         </v-btn>
       </div>
     </v-card-title>
-    <v-text-field :model-value="value" disabled hide-details variant="outlined" class="px-4 py-2" />
+    <v-text-field :model-value="value" hide-details readonly variant="outlined" class="px-4 py-2" />
   </v-card>
 </template>
