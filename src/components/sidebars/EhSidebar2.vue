@@ -24,8 +24,11 @@ const resetCopiedEmail = () => {
 
 <template>
   <v-navigation-drawer v-model="drawer" temporary :permanent="props.permanent">
-    <v-container class="d-flex align-center">
+    <v-container class="d-flex align-center justify-space-between">
       <EhBrand />
+      <v-btn v-if="$vuetify.display.mdAndDown" icon variant="text" @click="drawer = false">
+        <v-icon>mdi-close</v-icon>
+      </v-btn>
     </v-container>
 
     <v-list density="compact">
