@@ -75,14 +75,18 @@ const resetCopiedEmail = () => {
         title="Email"
       >
         <template #append>
-          <v-icon
-            size="small"
-            class="copy-icon"
-            @click.stop.prevent="copyEmail"
-            @mouseleave="resetCopiedEmail"
-          >
-            {{ !copiedEmail ? 'mdi-content-copy' : 'mdi-check' }}
-          </v-icon>
+          <v-tooltip text="49ehyeon42@email.com" location="top">
+            <template #activator="{ props }">
+              <v-icon
+                v-bind="props"
+                class="copy-icon"
+                @click.stop.prevent="copyEmail"
+                @mouseleave="resetCopiedEmail"
+              >
+                {{ !copiedEmail ? 'mdi-content-copy' : 'mdi-check' }}
+              </v-icon>
+            </template>
+          </v-tooltip>
         </template>
       </EhListItem2>
       <EhListItem2
