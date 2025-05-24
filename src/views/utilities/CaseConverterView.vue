@@ -1,92 +1,110 @@
 <script setup lang="ts">
-import SidebarLayout2 from '@/layouts/SidebarLayout2.vue';
 import { ref, computed } from 'vue';
 
-const inputText = ref('');
+import EhLayout2 from '@/layouts/EhLayout2.vue';
+import CaseConverterCard from '@/components/utilities/CaseConverterCard.vue';
 
-// 변환 로직
-const toCamelCase = (text: string) =>
+const inputText = ref<string | null>(null);
+const kebabCaseUpper = ref(false);
+const snakeCaseUpper = ref(false);
+
+const camelCase = computed(() => (inputText.value ? convertTextToCamelCase(inputText.value) : ''));
+const pascalCase = computed(() =>
+  inputText.value ? convertTextToPascalCase(inputText.value) : '',
+);
+const snakeCase = computed(() =>
+  inputText.value
+    ? snakeCaseUpper.value
+      ? convertTextToSnakeCase(inputText.value).toUpperCase()
+      : convertTextToSnakeCase(inputText.value)
+    : '',
+);
+const kebabCase = computed(() =>
+  inputText.value
+    ? kebabCaseUpper.value
+      ? convertTextToKebabCase(inputText.value).toUpperCase()
+      : convertTextToKebabCase(inputText.value)
+    : '',
+);
+
+const convertTextToCamelCase = (text: string) =>
   text.toLowerCase().replace(/[-_ ]+(\w)/g, (_, c) => c.toUpperCase());
 
-const toPascalCase = (text: string) => {
-  const camel = toCamelCase(text);
+const convertTextToPascalCase = (text: string) => {
+  const camel = convertTextToCamelCase(text);
   return camel.charAt(0).toUpperCase() + camel.slice(1);
 };
 
-const toSnakeCase = (text: string) =>
+const convertTextToSnakeCase = (text: string) =>
   text
     .replace(/([a-z])([A-Z])/g, '$1_$2')
     .replace(/[- ]+/g, '_')
     .toLowerCase();
 
-const toKebabCase = (text: string) =>
+const convertTextToKebabCase = (text: string) =>
   text
     .replace(/([a-z])([A-Z])/g, '$1-$2')
     .replace(/[_ ]+/g, '-')
     .toLowerCase();
 
-const camelCase = computed(() => toCamelCase(inputText.value));
-const pascalCase = computed(() => toPascalCase(inputText.value));
-const snakeCase = computed(() => toSnakeCase(inputText.value));
-const kebabCase = computed(() => toKebabCase(inputText.value));
+const toggleSnakeCase = () => (snakeCaseUpper.value = !snakeCaseUpper.value);
+const toggleKebabCase = () => (kebabCaseUpper.value = !kebabCaseUpper.value);
 
-const copyToClipboard = (text: string) => {
-  navigator.clipboard.writeText(text).then(() => {
-    console.log('Copied:', text);
-  });
-};
+const copyTextToClipboard = async (text: string) => await navigator.clipboard.writeText(text);
 </script>
 
 <template>
-  <SidebarLayout2>
-    <v-container>
-      <v-card class="pa-4">
-        <v-card-title>Case Converter</v-card-title>
+  <EhLayout2>
+    <v-container fluid>
+      <h1>Case Converter</h1>
 
-        <v-text-field v-model="inputText" label="Enter text" outlined dense />
+      <div class="d-flex flex-column" style="gap: 16px">
+        <v-text-field
+          v-model="inputText"
+          clearable
+          hide-details
+          label="Text"
+          :maxlength="64"
+          variant="outlined"
+          class="py-4"
+        />
 
-        <v-divider class="my-4" />
+        <CaseConverterCard
+          title="CamelCase"
+          subTitle="카멜 표기법"
+          :value="camelCase"
+          @copyTextToClipboard="copyTextToClipboard(camelCase)"
+        />
 
-        <v-list dense>
-          <v-list-item>
-            <v-list-item-title>CamelCase</v-list-item-title>
-            <v-list-item-subtitle>{{ camelCase }}</v-list-item-subtitle>
-            <v-btn icon size="small" @click="copyToClipboard(camelCase)">
-              <v-icon>mdi-content-copy</v-icon>
-            </v-btn>
-          </v-list-item>
+        <CaseConverterCard
+          title="PascalCase"
+          subTitle="파스칼 표기법"
+          :value="pascalCase"
+          @copyTextToClipboard="copyTextToClipboard(pascalCase)"
+        />
 
-          <v-list-item>
-            <v-list-item-title>PascalCase</v-list-item-title>
-            <v-list-item-subtitle>{{ pascalCase }}</v-list-item-subtitle>
-            <v-btn icon size="small" @click="copyToClipboard(pascalCase)">
-              <v-icon>mdi-content-copy</v-icon>
-            </v-btn>
-          </v-list-item>
+        <CaseConverterCard
+          title="snake_case"
+          subTitle="스네이크 표기법"
+          :value="snakeCase"
+          :use-toggle="true"
+          :isUpperCase="snakeCaseUpper"
+          @copyTextToClipboard="copyTextToClipboard(snakeCase)"
+          @toggleCase="toggleSnakeCase"
+        />
 
-          <v-list-item>
-            <v-list-item-title>snake_case</v-list-item-title>
-            <v-list-item-subtitle>{{ snakeCase }}</v-list-item-subtitle>
-            <v-btn icon size="small" @click="copyToClipboard(snakeCase)">
-              <v-icon>mdi-content-copy</v-icon>
-            </v-btn>
-          </v-list-item>
-
-          <v-list-item>
-            <v-list-item-title>kebab-case</v-list-item-title>
-            <v-list-item-subtitle>{{ kebabCase }}</v-list-item-subtitle>
-            <v-btn icon size="small" @click="copyToClipboard(kebabCase)">
-              <v-icon>mdi-content-copy</v-icon>
-            </v-btn>
-          </v-list-item>
-        </v-list>
-      </v-card>
+        <CaseConverterCard
+          title="kebab-case"
+          subTitle="케밥 표기법"
+          :value="kebabCase"
+          :use-toggle="true"
+          :isUpperCase="kebabCaseUpper"
+          @copyTextToClipboard="copyTextToClipboard(kebabCase)"
+          @toggleCase="toggleKebabCase"
+        />
+      </div>
     </v-container>
-  </SidebarLayout2>
+  </EhLayout2>
 </template>
 
-<style scoped>
-.v-list-item {
-  align-items: center;
-}
-</style>
+<style scoped></style>

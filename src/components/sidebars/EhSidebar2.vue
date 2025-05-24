@@ -60,7 +60,12 @@ const resetCopiedEmail = () => {
           <EhListItem2 v-bind="props" icon="mdi-tools" title="Utilities" />
         </template>
 
-        <EhListItem2 :depth="1" to="/" icon="mdi-application" title="NULL">
+        <EhListItem2
+          :depth="1"
+          to="/utilities/case-converter"
+          icon="mdi-format-letter-case"
+          title="Case Converter"
+        >
           <template #append>
             <v-badge color="primary" content="NEW" inline />
           </template>
