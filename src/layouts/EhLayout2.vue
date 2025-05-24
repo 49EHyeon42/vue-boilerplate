@@ -4,6 +4,7 @@ import EhHeader2 from '@/components/headers/EhHeader2.vue';
 
 import { ref } from 'vue';
 import { useDisplay } from 'vuetify';
+import EhFooter2 from '@/components/footers/EhFooter2.vue';
 
 const { mdAndDown } = useDisplay();
 
@@ -17,7 +18,7 @@ const drawer = ref(!mdAndDown.value);
     <v-main>
       <slot />
     </v-main>
-    <v-footer app />
+    <EhFooter2 />
   </v-layout>
 </template>
 
