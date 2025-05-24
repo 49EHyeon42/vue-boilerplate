@@ -1,18 +1,21 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineProps, computed } from 'vue';
 
-defineProps<{
+const props = defineProps<{
+  depth?: number;
   to?: string;
   href?: string;
   target?: string;
   icon?: string;
   title?: string;
 }>();
+
+const paddingLeft = computed(() => `${16 + (props.depth ?? 0) * 16}px`);
 </script>
 
 <template>
-  <v-list-item :href="href" :target="target" :to="to">
-    <div class="list-item-content d-flex align-center">
+  <v-list-item :href="href" :target="target" :to="to" :style="{ paddingLeft }">
+    <div class="d-flex align-center list-item-content">
       <v-icon>{{ icon }}</v-icon>
       <div class="text-subtitle-2">{{ title }}</div>
     </div>

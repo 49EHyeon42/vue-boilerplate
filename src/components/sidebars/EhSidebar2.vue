@@ -11,41 +11,20 @@ const drawer = defineModel<boolean>('drawer');
       <span class="text-h6">49EHyeon42</span>
     </v-container>
 
-    <v-list density="compact" class="m-0">
+    <v-list density="compact">
       <EhListItem2 to="/" icon="mdi-home" title="Home" />
       <EhListItem2 to="/about" icon="mdi-account" title="About" />
 
-      <!-- <v-list-group>
+      <v-list-group>
         <template #activator="{ props }">
-          <v-list-item v-bind="props">
-            <div class="d-flex align-center">
-              <v-icon class="mr-2">mdi-folder</v-icon>
-              <span class="text-subtitle-2">Projects</span>
-            </div>
-          </v-list-item>
+          <EhListItem2 v-bind="props" icon="mdi-folder" title="Projects" />
         </template>
 
-        <v-list-item to="/typography" style="padding-left: 32px !important">
-          <div class="d-flex align-center">
-            <v-icon class="mr-2">mdi-application</v-icon>
-            <span class="text-subtitle-2">커넥트립</span>
-          </div>
-        </v-list-item>
-        <v-list-item to="/typography" style="padding-left: 32px !important">
-          <div class="d-flex align-center">
-            <v-icon class="mr-2">mdi-application</v-icon>
-            <span class="text-subtitle-2">전화대장군</span>
-          </div>
-        </v-list-item>
-        <v-list-item to="/typography" style="padding-left: 32px !important">
-          <div class="d-flex align-center">
-            <v-icon class="mr-2">mdi-application</v-icon>
-            <span class="text-subtitle-2">로컬 업</span>
-          </div>
-        </v-list-item>
-      </v-list-group> -->
+        <EhListItem2 :depth="1" to="/" icon="mdi-application" title="커넥트립" />
+        <EhListItem2 :depth="1" to="/" icon="mdi-application" title="전화대장군" />
+        <EhListItem2 :depth="1" to="/" icon="mdi-application" title="로컬업" />
+      </v-list-group>
 
-      <!-- 보일러플레이트 -->
       <EhSubHeader2 title="Contact" />
       <EhListItem2
         href="mailto:49ehyeon42@email.com"
@@ -64,5 +43,3 @@ const drawer = defineModel<boolean>('drawer');
 </template>
 
 <style scoped></style>
-
-<!-- text-medium-emphasis 로 검정에서 회색 변경 가능 -->

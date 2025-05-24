@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Ehsidebar2 from '@/components/sidebars/Ehsidebar2.vue';
+import Ehsidebar2 from '@/components/sidebars/EhSidebar2.vue';
 import EhHeader2 from '@/components/headers/EhHeader2.vue';
 
 import { ref } from 'vue';
