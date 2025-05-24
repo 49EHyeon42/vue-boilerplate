@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import { defineProps, ref } from 'vue';
+import { computed, defineProps, ref } from 'vue';
 
 const props = defineProps<{
   title: string;
   subTitle: string;
   value: string;
   useToggle?: boolean;
-  // TODO: rename
-  isUpperCase?: boolean;
+  useUpperCase?: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -15,6 +14,8 @@ const emit = defineEmits<{
 }>();
 
 const hasCopied = ref(false);
+
+const upperCaseState = computed(() => props.useUpperCase);
 
 const copyTextToClipboard = async (text: string) => {
   await navigator.clipboard.writeText(text);
@@ -37,12 +38,13 @@ const resetCopyIcon = () => {
         <v-tooltip
           v-if="useToggle"
           location="top"
-          :text="props.isUpperCase ? 'UPPER CASE' : 'lower case'"
+          :text="upperCaseState ? 'UPPER CASE' : 'lower case'"
         >
           <template #activator="{ props: activatorProps }">
             <div v-bind="activatorProps">
+              <!-- TODO: 아이콘으로 변경 -->
               <v-switch
-                :model-value="props.isUpperCase"
+                :model-value="props.useUpperCase"
                 color="primary"
                 hide-details
                 @click="emit('toggleCase')"
