@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import EhBrand from '../common/EhBrand.vue';
 
-import { useDisplay } from 'vuetify';
-
 import { useToggleTheme } from '@/composables/useToggleTheme';
 
-const { mdAndDown } = useDisplay();
 const { isDark, toggleTheme } = useToggleTheme();
 
 const drawer = defineModel<boolean>('drawer');
@@ -13,7 +10,7 @@ const drawer = defineModel<boolean>('drawer');
 
 <template>
   <v-app-bar elevation="0">
-    <template v-if="mdAndDown">
+    <template v-if="$vuetify.display.mdAndDown">
       <v-app-bar-nav-icon @click="drawer = !drawer" />
       <v-app-bar-title>
         <EhBrand />
