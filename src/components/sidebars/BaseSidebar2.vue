@@ -1,7 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const drawer = defineModel<boolean>('drawer');
+</script>
 
 <template>
-  <v-navigation-drawer>
+  <!-- TODO: app, temporary 확인 -->
+  <v-navigation-drawer v-model="drawer" app temporary>
     <v-container class="d-flex align-center">
       <v-icon icon="mdi-debian" size="x-large" class="mr-2" />
       <span class="text-h6">49EHyeon42</span>
