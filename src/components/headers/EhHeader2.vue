@@ -2,10 +2,11 @@
 import EhBrand from '../common/EhBrand.vue';
 
 import { useDisplay } from 'vuetify';
+
 import { useToggleTheme } from '@/composables/useToggleTheme';
 
 const { mdAndDown } = useDisplay();
-const toggleTheme = useToggleTheme();
+const { isDark, toggleTheme } = useToggleTheme();
 
 const drawer = defineModel<boolean>('drawer');
 </script>
@@ -20,7 +21,7 @@ const drawer = defineModel<boolean>('drawer');
     </template>
     <template v-slot:append>
       <v-btn icon @click="toggleTheme">
-        <v-icon>mdi-theme-light-dark</v-icon>
+        <v-icon>{{ isDark ? 'mdi-weather-night' : 'mdi-white-balance-sunny' }}</v-icon>
       </v-btn>
     </template>
   </v-app-bar>
