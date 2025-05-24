@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, defineProps, ref } from 'vue';
+import { defineProps, ref } from 'vue';
 
 const props = defineProps<{
   title: string;
@@ -14,8 +14,6 @@ const emit = defineEmits<{
 }>();
 
 const hasCopied = ref(false);
-
-const upperCaseState = computed(() => props.useUpperCase);
 
 const copyTextToClipboard = async (text: string) => {
   await navigator.clipboard.writeText(text);
@@ -35,29 +33,22 @@ const resetCopyIcon = () => {
         <small class="text-grey">{{ subTitle }}</small>
       </div>
       <div class="d-flex align-center">
-        <v-tooltip
-          v-if="useToggle"
-          location="top"
-          :text="upperCaseState ? 'UPPER CASE' : 'lower case'"
-        >
-          <template #activator="{ props: activatorProps }">
-            <div v-bind="activatorProps">
-              <!-- TODO: 아이콘으로 변경 -->
-              <v-switch
-                :model-value="props.useUpperCase"
-                color="primary"
-                hide-details
-                @click="emit('toggleCase')"
-              />
-            </div>
-          </template>
-        </v-tooltip>
-        <v-btn
-          icon
-          variant="text"
-          @click.stop.prevent="copyTextToClipboard(value)"
-          @mouseleave="resetCopyIcon"
-        >
+        <template v-if="useToggle">
+          <v-tooltip location="top" :text="!props.useUpperCase ? 'lower case' : 'UPPER CASE'">
+            <template #activator="{ props: activatorProps }">
+              <v-btn icon variant="text" v-bind="activatorProps" @click.stop="emit('toggleCase')">
+                <v-icon>
+                  {{
+                    !props.useUpperCase
+                      ? 'mdi-format-letter-case-lower'
+                      : 'mdi-format-letter-case-upper'
+                  }}
+                </v-icon>
+              </v-btn>
+            </template>
+          </v-tooltip>
+        </template>
+        <v-btn icon variant="text" @click="copyTextToClipboard(value)" @mouseleave="resetCopyIcon">
           <v-icon>{{ !hasCopied ? 'mdi-content-copy' : 'mdi-check' }}</v-icon>
         </v-btn>
       </div>
