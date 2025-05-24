@@ -4,7 +4,15 @@ import { testRoutes } from './testViews';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [...utilitiesRoutes, ...testRoutes],
+  routes: [
+    ...utilitiesRoutes,
+    ...testRoutes,
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFoundView',
+      component: () => import('@/views/NotFoundView.vue'),
+    },
+  ],
 });
 
 export default router;
