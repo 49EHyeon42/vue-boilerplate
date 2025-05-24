@@ -32,6 +32,14 @@ const drawer = defineModel<boolean>('drawer');
         <EhListItem2 :depth="1" to="/" icon="mdi-application" title="로컬업" />
       </v-list-group>
 
+      <v-list-group>
+        <template #activator="{ props }">
+          <EhListItem2 v-bind="props" icon="mdi-tools" title="Utilities" />
+        </template>
+
+        <EhListItem2 :depth="1" to="/" icon="mdi-application" title="NULL" />
+      </v-list-group>
+
       <EhSubHeader2 title="Contact" />
       <EhListItem2
         href="mailto:49ehyeon42@email.com"
