@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import EhListItem2 from './items/EhListItem2.vue';
+
 const drawer = defineModel<boolean>('drawer');
 </script>
 
@@ -11,18 +13,10 @@ const drawer = defineModel<boolean>('drawer');
     </v-container>
 
     <v-list density="compact" class="m-0">
-      <v-list-item to="/">
-        <div class="d-flex align-center">
-          <v-icon class="mr-2">mdi-home</v-icon>
-          <span class="text-subtitle-2">Home</span>
-        </div>
-      </v-list-item>
-      <v-list-item to="/about">
-        <div class="d-flex align-center">
-          <v-icon class="mr-2">mdi-account</v-icon>
-          <span class="text-subtitle-2">About</span>
-        </div>
-      </v-list-item>
+      <EhListItem2 to="/" icon="mdi-home" title="Home" />
+      <EhListItem2 to="/about" icon="mdi-account" title="About" />
+
+      <v-list-item prepend-icon="mdi-home" title="Default" to="/" />
 
       <v-list-group>
         <template #activator="{ props }">
@@ -59,20 +53,20 @@ const drawer = defineModel<boolean>('drawer');
         <span class="mr-2 text-no-wrap text-subtitle-1">Contact</span>
         <v-divider />
       </v-container>
-      <v-list-item href="mailto:49ehyeon42@email.com" target="_blank">
-        <div class="d-flex align-center">
-          <v-icon class="mr-2">mdi-email</v-icon>
-          <span class="text-subtitle-2">Email</span>
-        </div>
-      </v-list-item>
-      <v-list-item href="https://github.com/49EHyeon42" target="_blank">
-        <div class="d-flex align-center">
-          <v-icon class="mr-2">mdi-github</v-icon>
-          <span class="text-subtitle-2">Github</span>
-        </div>
-      </v-list-item>
+      <EhListItem2
+        href="mailto:49ehyeon42@email.com"
+        icon="mdi-email"
+        target="_blank"
+        title="Email"
+      />
+      <EhListItem2
+        href="https://github.com/49EHyeon42"
+        icon="mdi-github"
+        target="_blank"
+        title="Github"
+      />
 
-      <v-container class="d-flex align-center pa-2">
+      <!-- <v-container class="d-flex align-center pa-2">
         <span class="mr-2 text-no-wrap text-subtitle-2">Sub Title</span>
         <v-divider />
       </v-container>
@@ -116,7 +110,7 @@ const drawer = defineModel<boolean>('drawer');
           <v-icon class="mr-2">mdi-message-alert</v-icon>
           <span class="text-subtitle-2">Dialogs</span>
         </div>
-      </v-list-item>
+      </v-list-item> -->
     </v-list>
   </v-navigation-drawer>
 </template>
