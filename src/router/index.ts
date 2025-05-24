@@ -4,6 +4,11 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
+      path: '/utilities/case-converter',
+      name: 'CaseConverterView',
+      component: () => import('@/views/utilities/CaseConverterView.vue'),
+    },
+    {
       path: '/test-views/main-view-with-velog',
       name: 'mainViewWithVelog',
       component: () => import('@/testViews/MainViewWithVelog.vue'),
