@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import EhBrand from '../common/EhBrand.vue';
+import EhBrand from '@/components/common/EhBrand.vue';
 
-import { useToggleTheme } from '@/composables/useToggleTheme';
-
-const { isDark, toggleTheme } = useToggleTheme();
+import { useThemeStore } from '@/stores/theme';
 
 const drawer = defineModel<boolean>('drawer');
+
+const themeStore = useThemeStore();
 </script>
 
 <template>
@@ -17,8 +17,8 @@ const drawer = defineModel<boolean>('drawer');
       </v-app-bar-title>
     </template>
     <template v-slot:append>
-      <v-btn icon @click="toggleTheme">
-        <v-icon>{{ isDark ? 'mdi-weather-night' : 'mdi-white-balance-sunny' }}</v-icon>
+      <v-btn icon @click="themeStore.toggleTheme">
+        <v-icon>{{ themeStore.isDark ? 'mdi-weather-night' : 'mdi-white-balance-sunny' }}</v-icon>
       </v-btn>
     </template>
   </v-app-bar>
