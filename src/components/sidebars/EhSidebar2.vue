@@ -12,8 +12,14 @@ const drawer = defineModel<boolean>('drawer');
     </v-container>
 
     <v-list density="compact">
-      <EhListItem2 to="/" icon="mdi-home" title="Home" />
-      <EhListItem2 to="/about" icon="mdi-account" title="About" />
+      <EhListItem2 icon="mdi-home" title="Home" to="/" />
+      <EhListItem2 icon="mdi-account" title="About" to="/about" />
+      <EhListItem2
+        href="https://www.notion.so/49EHyeon42-Blog-152e16973b1d8031b3bad3d5e959f9a1?pvs=4"
+        icon="mdi-post"
+        target="_blank"
+        title="Blog"
+      />
 
       <v-list-group>
         <template #activator="{ props }">
