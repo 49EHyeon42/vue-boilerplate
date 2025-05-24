@@ -5,8 +5,8 @@ import EhLayout2 from '@/layouts/EhLayout2.vue';
 import CaseConverterCard from '@/components/utilities/CaseConverterCard.vue';
 
 const inputText = ref<string | null>(null);
-const kebabCaseUpper = ref(false);
-const snakeCaseUpper = ref(false);
+const useSnakeUpperCase = ref(false);
+const useKebabUpperCase = ref(false);
 
 const camelCase = computed(() => (inputText.value ? convertTextToCamelCase(inputText.value) : ''));
 const pascalCase = computed(() =>
@@ -14,14 +14,14 @@ const pascalCase = computed(() =>
 );
 const snakeCase = computed(() =>
   inputText.value
-    ? snakeCaseUpper.value
+    ? useSnakeUpperCase.value
       ? convertTextToSnakeCase(inputText.value).toUpperCase()
       : convertTextToSnakeCase(inputText.value)
     : '',
 );
 const kebabCase = computed(() =>
   inputText.value
-    ? kebabCaseUpper.value
+    ? useKebabUpperCase.value
       ? convertTextToKebabCase(inputText.value).toUpperCase()
       : convertTextToKebabCase(inputText.value)
     : '',
@@ -31,8 +31,8 @@ const convertTextToCamelCase = (text: string) =>
   text.toLowerCase().replace(/[-_ ]+(\w)/g, (_, c) => c.toUpperCase());
 
 const convertTextToPascalCase = (text: string) => {
-  const camel = convertTextToCamelCase(text);
-  return camel.charAt(0).toUpperCase() + camel.slice(1);
+  const camelCase = convertTextToCamelCase(text);
+  return camelCase.charAt(0).toUpperCase() + camelCase.slice(1);
 };
 
 const convertTextToSnakeCase = (text: string) =>
@@ -47,8 +47,8 @@ const convertTextToKebabCase = (text: string) =>
     .replace(/[_ ]+/g, '-')
     .toLowerCase();
 
-const toggleSnakeCase = () => (snakeCaseUpper.value = !snakeCaseUpper.value);
-const toggleKebabCase = () => (kebabCaseUpper.value = !kebabCaseUpper.value);
+const toggleSnakeCase = () => (useSnakeUpperCase.value = !useSnakeUpperCase.value);
+const toggleKebabCase = () => (useKebabUpperCase.value = !useKebabUpperCase.value);
 </script>
 
 <template>
@@ -76,7 +76,7 @@ const toggleKebabCase = () => (kebabCaseUpper.value = !kebabCaseUpper.value);
           subTitle="스네이크 표기법"
           :value="snakeCase"
           :useToggle="true"
-          :isUpperCase="snakeCaseUpper"
+          :useUpperCase="useSnakeUpperCase"
           @toggleCase="toggleSnakeCase"
         />
 
@@ -85,7 +85,7 @@ const toggleKebabCase = () => (kebabCaseUpper.value = !kebabCaseUpper.value);
           subTitle="케밥 표기법"
           :value="kebabCase"
           :useToggle="true"
-          :isUpperCase="kebabCaseUpper"
+          :useUpperCase="useKebabUpperCase"
           @toggleCase="toggleKebabCase"
         />
       </div>
