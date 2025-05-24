@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+
 import EhBrand from '../common/EhBrand.vue';
 import EhSubHeader2 from './subHeaders/EhSubHeader2.vue';
 import EhListItem2 from './items/EhListItem2.vue';
@@ -7,6 +9,17 @@ const drawer = defineModel<boolean>('drawer');
 const props = defineProps<{
   permanent?: boolean;
 }>();
+
+const copiedEmail = ref(false);
+
+const copyEmail = async () => {
+  await navigator.clipboard.writeText('49ehyeon42@email.com');
+  copiedEmail.value = true;
+};
+
+const resetCopiedEmail = () => {
+  copiedEmail.value = false;
+};
 </script>
 
 <template>
@@ -32,7 +45,11 @@ const props = defineProps<{
 
         <EhListItem2 :depth="1" to="/" icon="mdi-application" title="커넥트립" />
         <EhListItem2 :depth="1" to="/" icon="mdi-application" title="전화대장군" />
-        <EhListItem2 :depth="1" to="/" icon="mdi-application" title="로컬업" badge="NEW" />
+        <EhListItem2 :depth="1" to="/" icon="mdi-application" title="로컬업">
+          <template #append>
+            <v-badge color="primary" content="NEW" inline />
+          </template>
+        </EhListItem2>
       </v-list-group>
 
       <v-list-group>
@@ -40,7 +57,11 @@ const props = defineProps<{
           <EhListItem2 v-bind="props" icon="mdi-tools" title="Utilities" />
         </template>
 
-        <EhListItem2 :depth="1" to="/" icon="mdi-application" title="NULL" badge="NEW" />
+        <EhListItem2 :depth="1" to="/" icon="mdi-application" title="NULL">
+          <template #append>
+            <v-badge color="primary" content="NEW" inline />
+          </template>
+        </EhListItem2>
       </v-list-group>
 
       <EhSubHeader2 title="Contact" />
@@ -49,7 +70,18 @@ const props = defineProps<{
         icon="mdi-email"
         target="_blank"
         title="Email"
-      />
+      >
+        <template #append>
+          <v-icon
+            size="small"
+            class="copy-icon"
+            @click.stop.prevent="copyEmail"
+            @mouseleave="resetCopiedEmail"
+          >
+            {{ !copiedEmail ? 'mdi-content-copy' : 'mdi-check' }}
+          </v-icon>
+        </template>
+      </EhListItem2>
       <EhListItem2
         href="https://github.com/49EHyeon42"
         icon="mdi-github"
@@ -60,4 +92,11 @@ const props = defineProps<{
   </v-navigation-drawer>
 </template>
 
-<style scoped></style>
+<style scoped>
+.copy-icon {
+  transition: transform 0.3s ease;
+}
+.copy-icon:hover {
+  transform: scale(1.3);
+}
+</style>

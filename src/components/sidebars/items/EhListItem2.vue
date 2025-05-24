@@ -2,7 +2,6 @@
 import { defineProps, computed } from 'vue';
 
 const props = defineProps<{
-  badge?: string;
   depth?: number;
   to?: string;
   href?: string;
@@ -20,8 +19,9 @@ const paddingLeft = computed(() => `${16 + (props.depth ?? 0) * 16}px`);
       <v-icon>{{ icon }}</v-icon>
       <div class="text-subtitle-2">{{ title }}</div>
     </div>
-    <template #append v-if="badge">
-      <v-badge color="primary" :content="badge" inline />
+
+    <template #append v-if="$slots.append">
+      <slot name="append" />
     </template>
   </v-list-item>
 </template>
