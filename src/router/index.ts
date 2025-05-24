@@ -18,6 +18,11 @@ const router = createRouter({
       name: 'sidebarLayout2',
       component: () => import('@/testViews/SidebarLayoutViews2.vue'),
     },
+    {
+      path: '/test-views/eh-layout2',
+      name: 'EhLayout2',
+      component: () => import('@/testViews/EhView2.vue'),
+    },
   ],
 });
 
