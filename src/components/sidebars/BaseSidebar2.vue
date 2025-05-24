@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import EhListItem2 from './items/EhListItem2.vue';
-import EhSubHeader2 from './subHeaders/EhSubHeader2.vue';
+import EhSubHeader2 from './subHeaders/EhListSubHeader2.vue';
 
 const drawer = defineModel<boolean>('drawer');
 </script>

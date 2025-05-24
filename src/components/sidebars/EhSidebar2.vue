@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 
 import EhBrand from '../common/EhBrand.vue';
-import EhSubHeader2 from './subHeaders/EhSubHeader2.vue';
+import EhListSubHeader2 from './subHeaders/EhListSubHeader2.vue';
 import EhListItem2 from './items/EhListItem2.vue';
 
 const drawer = defineModel<boolean>('drawer');
@@ -67,7 +67,7 @@ const resetCopiedEmail = () => {
         </EhListItem2>
       </v-list-group>
 
-      <EhSubHeader2 title="Contact" />
+      <EhListSubHeader2 title="Contact" />
       <EhListItem2
         href="mailto:49ehyeon42@email.com"
         icon="mdi-email"
