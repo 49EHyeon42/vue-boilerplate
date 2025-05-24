@@ -7,12 +7,12 @@ import { useDisplay } from 'vuetify';
 
 const { mdAndDown } = useDisplay();
 
-const drawer = ref<boolean>(true);
+const drawer = ref(!mdAndDown.value);
 </script>
 
 <template>
   <v-layout>
-    <Ehsidebar2 v-model:drawer="drawer" :permanent="!mdAndDown" :temporary="mdAndDown" />
+    <Ehsidebar2 v-model:drawer="drawer" :permanent="!mdAndDown" />
     <EhHeader2 v-model:drawer="drawer" />
     <v-main>
       <slot />

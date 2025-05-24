@@ -4,10 +4,13 @@ import EhSubHeader2 from './subHeaders/EhSubHeader2.vue';
 import EhListItem2 from './items/EhListItem2.vue';
 
 const drawer = defineModel<boolean>('drawer');
+const props = defineProps<{
+  permanent?: boolean;
+}>();
 </script>
 
 <template>
-  <v-navigation-drawer v-model="drawer" temporary>
+  <v-navigation-drawer v-model="drawer" temporary :permanent="props.permanent">
     <v-container class="d-flex align-center">
       <EhBrand />
     </v-container>
