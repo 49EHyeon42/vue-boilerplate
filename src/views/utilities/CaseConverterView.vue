@@ -49,8 +49,6 @@ const convertTextToKebabCase = (text: string) =>
 
 const toggleSnakeCase = () => (snakeCaseUpper.value = !snakeCaseUpper.value);
 const toggleKebabCase = () => (kebabCaseUpper.value = !kebabCaseUpper.value);
-
-const copyTextToClipboard = async (text: string) => await navigator.clipboard.writeText(text);
 </script>
 
 <template>
@@ -69,27 +67,16 @@ const copyTextToClipboard = async (text: string) => await navigator.clipboard.wr
           class="py-4"
         />
 
-        <CaseConverterCard
-          title="CamelCase"
-          subTitle="카멜 표기법"
-          :value="camelCase"
-          @copyTextToClipboard="copyTextToClipboard(camelCase)"
-        />
+        <CaseConverterCard title="CamelCase" subTitle="카멜 표기법" :value="camelCase" />
 
-        <CaseConverterCard
-          title="PascalCase"
-          subTitle="파스칼 표기법"
-          :value="pascalCase"
-          @copyTextToClipboard="copyTextToClipboard(pascalCase)"
-        />
+        <CaseConverterCard title="PascalCase" subTitle="파스칼 표기법" :value="pascalCase" />
 
         <CaseConverterCard
           title="snake_case"
           subTitle="스네이크 표기법"
           :value="snakeCase"
-          :use-toggle="true"
+          :useToggle="true"
           :isUpperCase="snakeCaseUpper"
-          @copyTextToClipboard="copyTextToClipboard(snakeCase)"
           @toggleCase="toggleSnakeCase"
         />
 
@@ -97,9 +84,8 @@ const copyTextToClipboard = async (text: string) => await navigator.clipboard.wr
           title="kebab-case"
           subTitle="케밥 표기법"
           :value="kebabCase"
-          :use-toggle="true"
+          :useToggle="true"
           :isUpperCase="kebabCaseUpper"
-          @copyTextToClipboard="copyTextToClipboard(kebabCase)"
           @toggleCase="toggleKebabCase"
         />
       </div>

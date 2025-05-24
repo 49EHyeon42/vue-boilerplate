@@ -1,18 +1,29 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineProps, ref } from 'vue';
 
 const props = defineProps<{
   title: string;
   subTitle: string;
   value: string;
   useToggle?: boolean;
+  // TODO: rename
   isUpperCase?: boolean;
 }>();
 
 const emit = defineEmits<{
-  (e: 'copyTextToClipboard'): void;
   (e: 'toggleCase'): void;
 }>();
+
+const hasCopied = ref(false);
+
+const copyTextToClipboard = async (text: string) => {
+  await navigator.clipboard.writeText(text);
+  hasCopied.value = true;
+};
+
+const resetCopyIcon = () => {
+  hasCopied.value = false;
+};
 </script>
 
 <template>
@@ -39,8 +50,13 @@ const emit = defineEmits<{
             </div>
           </template>
         </v-tooltip>
-        <v-btn icon variant="text" @click.stop.prevent="emit('copyTextToClipboard')">
-          <v-icon>mdi-content-copy</v-icon>
+        <v-btn
+          icon
+          variant="text"
+          @click.stop.prevent="copyTextToClipboard(value)"
+          @mouseleave="resetCopyIcon"
+        >
+          <v-icon>{{ !hasCopied ? 'mdi-content-copy' : 'mdi-check' }}</v-icon>
         </v-btn>
       </div>
     </v-card-title>

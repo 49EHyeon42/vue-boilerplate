@@ -10,6 +10,7 @@ const props = defineProps<{
   permanent?: boolean;
 }>();
 
+// TODO: rename
 const copiedEmail = ref(false);
 
 const copyEmail = async () => {
