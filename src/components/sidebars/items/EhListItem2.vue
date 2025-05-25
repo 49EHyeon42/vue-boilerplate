@@ -15,7 +15,7 @@ const paddingLeft = computed(() => `${16 + (props.depth ?? 0) * 16}px`);
 
 <template>
   <v-list-item :href="href" :target="target" :to="to" :style="{ paddingLeft }">
-    <div class="d-flex align-center list-item-content">
+    <div class="d-flex align-center ga-2">
       <v-icon>{{ icon }}</v-icon>
       <div class="text-subtitle-2">{{ title }}</div>
     </div>
@@ -26,8 +26,4 @@ const paddingLeft = computed(() => `${16 + (props.depth ?? 0) * 16}px`);
   </v-list-item>
 </template>
 
-<style scoped>
-.list-item-content {
-  gap: 8px;
-}
-</style>
+<style scoped></style>

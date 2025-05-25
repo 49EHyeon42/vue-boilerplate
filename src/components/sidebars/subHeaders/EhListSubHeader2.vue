@@ -7,14 +7,10 @@ const props = defineProps<{
 </script>
 
 <template>
-  <v-container class="d-flex align-center pa-2 sub-header-gap">
+  <v-container class="d-flex align-center ga-2 pa-2">
     <span class="text-subtitle-1 text-no-wrap">{{ props.title }}</span>
     <v-divider />
   </v-container>
 </template>
 
-<style scoped>
-.sub-header-gap {
-  gap: 8px;
-}
-</style>
+<style scoped></style>

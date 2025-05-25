@@ -28,7 +28,7 @@ const resetCopyIcon = () => {
 <template>
   <v-card>
     <v-card-title class="d-flex align-center justify-space-between">
-      <div class="d-flex align-center" style="gap: 8px">
+      <div class="d-flex align-center ga-2">
         <span>{{ title }}</span>
         <small class="text-grey">{{ subTitle }}</small>
       </div>

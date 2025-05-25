@@ -56,7 +56,7 @@ const toggleKebabCase = () => (useKebabUpperCase.value = !useKebabUpperCase.valu
     <v-container fluid>
       <h1>Case Converter</h1>
 
-      <div class="d-flex flex-column" style="gap: 16px">
+      <div class="d-flex flex-column ga-4">
         <v-text-field
           v-model="inputText"
           clearable

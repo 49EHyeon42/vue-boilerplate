@@ -5,7 +5,7 @@ import EhLayout2 from '@/layouts/EhLayout2.vue';
 <template>
   <EhLayout2>
     <v-container fluid class="d-flex justify-center align-center container">
-      <div class="d-flex align-center gap">
+      <div class="d-flex align-center ga-8">
         <v-icon size="128">mdi-alert</v-icon>
 
         <div class="d-flex flex-column">
@@ -20,8 +20,5 @@ import EhLayout2 from '@/layouts/EhLayout2.vue';
 <style scoped>
 .container {
   height: 100vh;
-}
-.gap {
-  gap: 32px;
 }
 </style>

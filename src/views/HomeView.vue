@@ -5,8 +5,8 @@ import EhLayout2 from '@/layouts/EhLayout2.vue';
 <template>
   <EhLayout2>
     <!-- TODO: 모바일은 나중에 -->
-    <v-container fluid class="d-flex flex-column align-center justify-start" style="gap: 16px">
-      <div class="d-flex align-center" style="gap: 32px">
+    <v-container fluid class="d-flex flex-column align-center justify-start ga-4">
+      <div class="d-flex align-center ga-8">
         <v-avatar size="256">
           <v-tooltip location="bottom">
             <template #activator="{ props }">
@@ -16,13 +16,13 @@ import EhLayout2 from '@/layouts/EhLayout2.vue';
           </v-tooltip>
         </v-avatar>
 
-        <div class="d-flex flex-column" style="gap: 32px">
-          <div class="d-flex align-end" style="gap: 8px">
+        <div class="d-flex flex-column ga-8">
+          <div class="d-flex align-end ga-2">
             <span class="text-h3 font-weight-bold">49EHyeon42</span>
             <span class="text-h6 font-weight-medium text-grey">Noah Jo / 조태현</span>
           </div>
 
-          <div class="d-flex align-center" style="gap: 8px">
+          <div class="d-flex align-center ga-2">
             <v-chip href="mailto:49ehyeon42@email.com" target="_blank" prepend-icon="mdi-email">
               Email
             </v-chip>
