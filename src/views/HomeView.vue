@@ -4,7 +4,8 @@ import EhLayout2 from '@/layouts/EhLayout2.vue';
 
 <template>
   <EhLayout2>
-    <v-container fluid class="d-flex flex-column align-center justify-start">
+    <!-- TODO: 모바일은 나중에 -->
+    <v-container fluid class="d-flex flex-column align-center justify-start" style="gap: 16px">
       <div class="d-flex align-center" style="gap: 32px">
         <v-avatar size="256">
           <img src="/home/profile.png" />
@@ -27,8 +28,10 @@ import EhLayout2 from '@/layouts/EhLayout2.vue';
         </div>
       </div>
 
-      <div class="text-h2 font-weight-bold slogan-text">Dream. Believe. Achieve.</div>
-      <div class="text-h2 font-weight-bold slogan-text">Show and Prove</div>
+      <div class="text-h2 font-weight-bold slogan-text">
+        <p>Dream. Believe. Achieve.</p>
+        <p>Show and Prove.</p>
+      </div>
     </v-container>
   </EhLayout2>
 </template>
