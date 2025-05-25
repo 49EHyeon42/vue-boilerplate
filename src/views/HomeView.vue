@@ -8,7 +8,12 @@ import EhLayout2 from '@/layouts/EhLayout2.vue';
     <v-container fluid class="d-flex flex-column align-center justify-start" style="gap: 16px">
       <div class="d-flex align-center" style="gap: 32px">
         <v-avatar size="256">
-          <img src="/home/profile.png" />
+          <v-tooltip location="bottom">
+            <template #activator="{ props }">
+              <img v-bind="props" src="/home/profile.png" />
+            </template>
+            부실감자
+          </v-tooltip>
         </v-avatar>
 
         <div class="d-flex flex-column" style="gap: 32px">
