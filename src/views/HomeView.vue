@@ -7,14 +7,12 @@ import EhLayout2 from '@/layouts/EhLayout2.vue';
     <!-- TODO: 모바일은 나중에 -->
     <v-container fluid class="d-flex flex-column align-center justify-start ga-4">
       <div class="d-flex align-center ga-8">
-        <v-avatar size="256">
-          <v-tooltip location="bottom">
-            <template #activator="{ props }">
-              <img v-bind="props" src="/home/profile.png" />
-            </template>
-            부실감자
-          </v-tooltip>
-        </v-avatar>
+        <v-tooltip location="bottom">
+          <template #activator="{ props }">
+            <v-avatar v-bind="props" image="/home/profile.png" size="256" />
+          </template>
+          부실감자
+        </v-tooltip>
 
         <div class="d-flex flex-column ga-8">
           <div class="d-flex align-end ga-2">
