@@ -9,7 +9,7 @@ const props = defineProps<{
   useUpperCase?: boolean;
 }>();
 
-const emit = defineEmits<{
+const emits = defineEmits<{
   (e: 'toggleCase'): void;
 }>();
 
@@ -36,7 +36,7 @@ const resetCopyIcon = () => {
         <template v-if="useToggle">
           <v-tooltip location="top" :text="!props.useUpperCase ? 'lower case' : 'UPPER CASE'">
             <template #activator="{ props: activatorProps }">
-              <v-btn icon variant="text" v-bind="activatorProps" @click.stop="emit('toggleCase')">
+              <v-btn icon variant="text" v-bind="activatorProps" @click.stop="emits('toggleCase')">
                 <v-icon>
                   {{
                     !props.useUpperCase

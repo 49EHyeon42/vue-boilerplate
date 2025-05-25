@@ -10,16 +10,15 @@ const props = defineProps<{
   permanent?: boolean;
 }>();
 
-// TODO: rename
-const copiedEmail = ref(false);
+const hasCopied = ref(false);
 
 const copyEmail = async () => {
   await navigator.clipboard.writeText('49ehyeon42@email.com');
-  copiedEmail.value = true;
+  hasCopied.value = true;
 };
 
-const resetCopiedEmail = () => {
-  copiedEmail.value = false;
+const resetCopyIcon = () => {
+  hasCopied.value = false;
 };
 </script>
 
@@ -87,9 +86,9 @@ const resetCopiedEmail = () => {
                 v-bind="props"
                 class="copy-icon"
                 @click.stop.prevent="copyEmail"
-                @mouseleave="resetCopiedEmail"
+                @mouseleave="resetCopyIcon"
               >
-                {{ !copiedEmail ? 'mdi-content-copy' : 'mdi-check' }}
+                {{ !hasCopied ? 'mdi-content-copy' : 'mdi-check' }}
               </v-icon>
             </template>
           </v-tooltip>

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import EhBrand from '@/components/common/EhBrand.vue';
-
 import { useThemeStore } from '@/stores/theme';
 
-const drawer = defineModel<boolean>('drawer');
+import EhBrand from '@/components/common/EhBrand.vue';
 
 const themeStore = useThemeStore();
+
+const drawer = defineModel<boolean>('drawer');
 </script>
 
 <template>
