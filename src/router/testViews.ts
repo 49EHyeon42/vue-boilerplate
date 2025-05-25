@@ -19,4 +19,9 @@ export const testRoutes = [
     name: 'EhLayout2',
     component: () => import('@/testViews/EhView2.vue'),
   },
+  {
+    path: '/test-views/dashboard-view',
+    name: 'DashboardView',
+    component: () => import('@/testViews/DashboardView.vue'),
+  },
 ];
