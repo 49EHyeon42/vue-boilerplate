@@ -24,14 +24,17 @@ const resetCopyIcon = () => {
 
 <template>
   <v-navigation-drawer v-model="drawer" temporary :permanent="props.permanent" width="240">
-    <v-container class="d-flex align-center justify-space-between">
-      <EhBrand />
-      <v-btn v-if="$vuetify.display.mdAndDown" icon variant="text" @click="drawer = false">
-        <v-icon>mdi-close</v-icon>
-      </v-btn>
-    </v-container>
+    <!-- header -->
+    <template v-slot:prepend>
+      <v-container class="d-flex align-center justify-space-between">
+        <EhBrand />
+        <v-btn v-if="$vuetify.display.mdAndDown" icon variant="text" @click="drawer = false">
+          <v-icon>mdi-close</v-icon>
+        </v-btn>
+      </v-container>
+    </template>
 
-    <v-list density="compact">
+    <v-list density="compact" class="pa-0">
       <EhListItem2 icon="mdi-home" title="Home" to="/" />
       <EhListItem2 icon="mdi-account" title="About" to="/about" />
       <EhListItem2
