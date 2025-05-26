@@ -7,10 +7,12 @@ import EhLayout2 from '@/layouts/EhLayout2.vue';
     <v-container fluid>
       <v-row>
         <v-col cols="12" class="d-flex">
+          <!-- TODO: 나중에 w-100 빼고 조절 -->
           <v-card class="w-100">
             <v-card-title>교외 활동</v-card-title>
             <v-card-text>
-              <v-timeline side="end">
+              <!-- TODO: md 미만 세로, 이후 가로, 리스트 안보이게 -->
+              <v-timeline side="end" truncate-line="end">
                 <v-timeline-item dot-color="blue" icon="mdi-run" fill-dot>
                   <template #opposite>2025.05.27 ~</template>
                   <div>
