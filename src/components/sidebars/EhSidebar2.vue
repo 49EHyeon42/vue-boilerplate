@@ -44,7 +44,7 @@ const resetCopyIcon = () => {
         title="Blog"
       />
 
-      <v-list-group>
+      <v-list-group color="primary">
         <template #activator="{ props }">
           <EhListItem2 v-bind="props" icon="mdi-folder" title="Projects" />
         </template>
@@ -58,7 +58,7 @@ const resetCopyIcon = () => {
         </EhListItem2>
       </v-list-group>
 
-      <v-list-group>
+      <v-list-group color="primary">
         <template #activator="{ props }">
           <EhListItem2 v-bind="props" icon="mdi-tools" title="Utilities" />
         </template>
