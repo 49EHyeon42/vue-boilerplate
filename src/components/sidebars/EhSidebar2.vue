@@ -23,7 +23,7 @@ const resetCopyIcon = () => {
 </script>
 
 <template>
-  <v-navigation-drawer v-model="drawer" temporary :permanent="props.permanent">
+  <v-navigation-drawer v-model="drawer" temporary :permanent="props.permanent" width="240">
     <v-container class="d-flex align-center justify-space-between">
       <EhBrand />
       <v-btn v-if="$vuetify.display.mdAndDown" icon variant="text" @click="drawer = false">
@@ -101,6 +101,15 @@ const resetCopyIcon = () => {
         title="Github"
       />
     </v-list>
+
+    <!-- footer -->
+    <template v-slot:append>
+      <div class="ma-2 text-center">
+        <span class="text-medium-emphasis" style="font-size: 11px">
+          © 2025 49EHyeon42. All rights reserved.
+        </span>
+      </div>
+    </template>
   </v-navigation-drawer>
 </template>
 

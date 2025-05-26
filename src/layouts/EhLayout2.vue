@@ -4,7 +4,6 @@ import { useDisplay } from 'vuetify';
 
 import Ehsidebar2 from '@/components/sidebars/EhSidebar2.vue';
 import EhHeader2 from '@/components/headers/EhHeader2.vue';
-import EhFooter2 from '@/components/footers/EhFooter2.vue';
 
 const { mdAndDown } = useDisplay();
 
@@ -35,7 +34,6 @@ onUnmounted(() => {
     <v-main>
       <slot />
     </v-main>
-    <EhFooter2 />
 
     <!-- scroll to top button -->
     <!-- footer 때문에 z-index: 905 사용 -->
