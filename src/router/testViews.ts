@@ -20,6 +20,11 @@ export const testRoutes = [
     component: () => import('@/testViews/EhView2.vue'),
   },
   {
+    path: '/test-views/sign-in-view1',
+    name: 'SignInView1',
+    component: () => import('@/testViews/SignInView1.vue'),
+  },
+  {
     path: '/test-views/dashboard-view',
     name: 'DashboardView',
     component: () => import('@/testViews/DashboardView.vue'),
