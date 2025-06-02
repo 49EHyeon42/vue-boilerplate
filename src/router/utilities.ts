@@ -4,4 +4,9 @@ export const utilitiesRoutes = [
     name: 'CaseConverterView',
     component: () => import('@/views/utilities/CaseConverterView.vue'),
   },
+  {
+    path: '/utilities/tour-api',
+    name: 'TourApiView',
+    component: () => import('@/views/utilities/TourApiView.vue'),
+  },
 ];
