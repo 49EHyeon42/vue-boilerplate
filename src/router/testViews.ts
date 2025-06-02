@@ -1,5 +1,10 @@
 export const testRoutes = [
   {
+    path: '/tests/life-cycle',
+    name: 'LifeCycleView',
+    component: () => import('@/views/tests/LifeCycleView.vue'),
+  },
+  {
     path: '/test-views/main-view-with-velog',
     name: 'mainViewWithVelog',
     component: () => import('@/testViews/MainViewWithVelog.vue'),
