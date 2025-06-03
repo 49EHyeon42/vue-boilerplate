@@ -67,6 +67,49 @@ const sendRequest = () => {
       apiResponse.value = { error: error.message };
     });
 };
+
+const uniqueTatsNmList = ref<string[]>([]);
+
+const fetchAllTatsNm = async () => {
+  try {
+    // Step 1: totalCount 확인
+    const params1: Record<string, unknown> = {
+      serviceKey: serviceKey.value,
+      pageNo: 1,
+      numOfRows: 1,
+      MobileOS: mobileOS.value,
+      MobileApp: mobileApp.value,
+      areaCd: selectedArea.value,
+      signguCd: selectedSigungu.value,
+      _type: _type.value,
+    };
+    const url1 = `https://apis.data.go.kr/B551011/TatsCnctrRateService/tatsCnctrRatedList?${new URLSearchParams(params1).toString()}`;
+    const res1 = await fetch(url1);
+    const data1 = await res1.json();
+    const totalCount = data1.response.body.totalCount;
+
+    console.log('전체 항목 수:', totalCount);
+
+    // Step 2: 전체 데이터 가져오기
+    const params2: Record<string, unknown> = {
+      ...params1,
+      numOfRows: totalCount,
+    };
+    const url2 = `https://apis.data.go.kr/B551011/TatsCnctrRateService/tatsCnctrRatedList?${new URLSearchParams(params2).toString()}`;
+    const res2 = await fetch(url2);
+    const data2 = await res2.json();
+
+    // Step 3: 중복 없는 관광지명 추출
+    const items = data2.response.body.items.item;
+    const uniqueNames = Array.from(new Set(items.map((item: unknown) => item.tAtsNm)));
+    uniqueTatsNmList.value = uniqueNames;
+
+    console.log('중복 없는 관광지명 리스트:', uniqueNames);
+  } catch (err) {
+    console.error('전체 관광지명 가져오기 오류:', err);
+    uniqueTatsNmList.value = [`오류: ${err}`];
+  }
+};
 </script>
 
 <template>
@@ -145,6 +188,19 @@ const sendRequest = () => {
           <v-card outlined>
             <v-card-text>
               <pre>{{ apiResponse }}</pre>
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+
+      <!-- 관광지명 -->
+      <v-row>
+        <v-col>
+          <v-btn color="success" @click="fetchAllTatsNm"> 전체 관광지명 가져오기 </v-btn>
+          <h4>관광지명 목록</h4>
+          <v-card outlined>
+            <v-card-text>
+              <pre>{{ uniqueTatsNmList }}</pre>
             </v-card-text>
           </v-card>
         </v-col>
