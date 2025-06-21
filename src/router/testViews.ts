@@ -34,4 +34,9 @@ export const testRoutes = [
     name: 'DashboardView',
     component: () => import('@/testViews/DashboardView.vue'),
   },
+  {
+    path: '/test-views/local-up',
+    name: 'LocalUpView',
+    component: () => import('@/testViews/LocalUpView.vue'),
+  },
 ];
