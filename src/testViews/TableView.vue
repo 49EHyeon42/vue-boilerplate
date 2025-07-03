@@ -9,7 +9,19 @@
         :loading="loading"
         item-value="name"
         @update:options="loadItems"
-      ></v-data-table-server>
+      >
+        <!-- fuel 열 커스터마이징 -->
+        <template v-slot:[`item.fuel`]="{ item }">
+          <v-tooltip location="top">
+            <template #activator="{ props }">
+              <div class="text-truncate" v-bind="props">
+                {{ item.fuel }}
+              </div>
+            </template>
+            {{ item.fuel }}
+          </v-tooltip>
+        </template>
+      </v-data-table-server>
     </v-container>
   </EhLayout2>
 </template>
@@ -32,35 +44,35 @@ const cars = [
   {
     name: 'Ford Mustang',
     horsepower: 450,
-    fuel: 'Gasoline',
+    fuel: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce mollis condimentum ante, a interdum augue rhoncus at. Donec eleifend nisl sit amet semper lobortis. Nulla feugiat ullamcorper urna, eget posuere lectus bibendum in. Maecenas sit amet euismod turpis. Aenean est augue, commodo maximus mauris nec, tristique gravida diam. Donec sapien risus, posuere sit amet sodales a, pulvinar ac risus. Sed eget semper diam. Suspendisse mollis tempus erat, ac iaculis justo. Sed fermentum dolor non lectus maximus, sit amet vulputate tortor feugiat. Phasellus scelerisque leo vitae urna euismod, a venenatis lectus finibus. Cras urna justo, sagittis ut semper et, blandit tempor purus.',
     origin: 'USA',
     price: 55000,
   },
   {
     name: 'Tesla Model S',
     horsepower: 670,
-    fuel: 'Electric',
+    fuel: 'In congue, tortor hendrerit egestas blandit, quam mauris lacinia risus, ut porta urna eros sed mi. Nunc eget hendrerit ante, ut maximus purus. Nunc venenatis sollicitudin tortor in ultricies. Donec egestas libero in enim fringilla, non posuere magna condimentum. Vestibulum malesuada condimentum faucibus. Phasellus sed sapien et ligula rhoncus aliquet quis eget urna. Donec rutrum eget tellus vel dapibus. Ut sit amet vestibulum mi. Vestibulum viverra, nunc ac mattis auctor, elit est gravida dui, vitae cursus nibh mauris ac lacus. Sed elementum libero eget lacus tempor dignissim.',
     origin: 'USA',
     price: 79999,
   },
   {
     name: 'BMW M3',
     horsepower: 503,
-    fuel: 'Gasoline',
+    fuel: 'Nulla ullamcorper aliquet nunc, vitae sagittis metus interdum condimentum. Vivamus feugiat leo est, pharetra efficitur ligula dictum et. In non lacinia risus, ultrices mollis libero. Aenean tristique sodales nisi, ac fermentum nisl aliquet vitae. Phasellus nulla leo, sollicitudin eu euismod ac, maximus non nunc. Cras magna elit, egestas ut lacus vitae, laoreet pharetra turpis. Donec tortor nisi, vehicula accumsan ex a, rutrum gravida neque. Aliquam imperdiet aliquam eros quis placerat. Proin est ex, accumsan nec scelerisque vel, ornare vel mauris. Cras ipsum lectus, ultricies finibus ultrices at, faucibus sagittis turpis. Integer porta nunc ultricies lacus varius consequat.',
     origin: 'Germany',
     price: 70000,
   },
   {
     name: 'Audi RS6',
     horsepower: 591,
-    fuel: 'Gasoline',
+    fuel: 'Vivamus imperdiet sit amet leo at malesuada. In gravida interdum eros. Aliquam vitae justo velit. Nullam tempus gravida mauris at commodo. Donec posuere purus in massa tincidunt maximus sit amet sit amet orci. Morbi id libero ut nisi euismod consequat. Nulla et venenatis lorem. Aliquam id nibh erat. Ut consequat imperdiet massa eu efficitur. Nam condimentum nunc id ante commodo vehicula. Suspendisse pretium arcu ut mauris gravida pellentesque. Praesent vestibulum arcu vel lobortis tempus.',
     origin: 'Germany',
     price: 109000,
   },
   {
     name: 'Chevrolet Camaro',
     horsepower: 650,
-    fuel: 'Gasoline',
+    fuel: 'Donec non nisl ultrices, tincidunt urna eu, rutrum libero. Nunc tincidunt ex non ligula tempus, eu vulputate arcu vulputate. Aenean porttitor elit a quam volutpat mollis. Aliquam dictum metus et ipsum pharetra aliquam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque venenatis consectetur egestas. Aenean quis orci non erat finibus pharetra. Nulla sed purus turpis.',
     origin: 'USA',
     price: 62000,
   },
@@ -154,7 +166,7 @@ const itemsPerPage = ref(5);
 const headers = ref<DataTableHeader[]>([
   { title: 'Car Model', key: 'name', align: 'start' },
   { title: 'Horsepower', key: 'horsepower', align: 'center' },
-  { title: 'Fuel Type', key: 'fuel', align: 'start' },
+  { title: 'Fuel Type', key: 'fuel', align: 'start', width: 300, maxWidth: 300 },
   { title: 'Origin', key: 'origin', align: 'center' },
   { title: 'Price ($)', key: 'price', align: 'end' },
 ]);
