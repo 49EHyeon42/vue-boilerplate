@@ -12,9 +12,13 @@
       >
         <!-- fuel 열 커스터마이징 -->
         <template v-slot:[`item.fuel`]="{ item }">
-          <v-tooltip location="top">
+          <v-tooltip location="top" :disabled="!truncatedItems[item.name]">
             <template #activator="{ props }">
-              <div class="text-truncate" v-bind="props">
+              <div
+                class="text-truncate"
+                v-bind="props"
+                @mouseenter="checkTruncation($event, item.name)"
+              >
                 {{ item.fuel }}
               </div>
             </template>
@@ -32,8 +36,24 @@ import type { DataTableHeader } from 'vuetify';
 
 import EhLayout2 from '@/layouts/EhLayout2.vue';
 
+// string -> name
+const truncatedItems = ref<Record<string, boolean>>({});
+
+function checkTruncation(event: MouseEvent, name: string) {
+  const element = event.target as HTMLElement;
+
+  // 최적화
+  if (name in truncatedItems.value) {
+    return;
+  }
+
+  if (element) {
+    truncatedItems.value[name] = element.scrollWidth > element.clientWidth;
+  }
+}
+
 type Car = {
-  name: string;
+  name: string; // 고유하다 가정
   horsepower: number;
   fuel: string;
   origin: string;
