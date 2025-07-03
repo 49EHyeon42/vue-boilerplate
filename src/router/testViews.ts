@@ -39,4 +39,9 @@ export const testRoutes = [
     name: 'LocalUpView',
     component: () => import('@/testViews/LocalUpView.vue'),
   },
+  {
+    path: '/test-views/table-view',
+    name: 'TableView',
+    component: () => import('@/testViews/TableView.vue'),
+  },
 ];
