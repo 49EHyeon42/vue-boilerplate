@@ -44,4 +44,9 @@ export const testRoutes = [
     name: 'TableView',
     component: () => import('@/testViews/TableView.vue'),
   },
+  {
+    path: '/test-views/card-test',
+    name: 'CardTestView',
+    component: () => import('@/testViews/CardTestView.vue'),
+  },
 ];
