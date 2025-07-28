@@ -59,4 +59,9 @@ export const testRoutes = [
     name: 'MarkdownView2',
     component: () => import('@/testViews/MarkdownView2.vue'),
   },
+  {
+    path: '/test-views/drag-and-drop',
+    name: 'DragAndDropView',
+    component: () => import('@/testViews/DragAndDropView.vue'),
+  },
 ];
