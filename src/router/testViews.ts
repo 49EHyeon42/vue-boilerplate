@@ -49,4 +49,9 @@ export const testRoutes = [
     name: 'CardTestView',
     component: () => import('@/testViews/CardTestView.vue'),
   },
+  {
+    path: '/test-views/markdown',
+    name: 'MarkdownView',
+    component: () => import('@/testViews/MarkdownView.vue'),
+  },
 ];
